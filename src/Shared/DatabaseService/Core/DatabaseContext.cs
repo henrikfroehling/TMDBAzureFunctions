@@ -12,6 +12,8 @@ namespace DatabaseService.Core
             _databaseConnection = databaseConnection;
         }
 
+        public DbSet<LocalizationCodes> LocalizationCodes { get; set; }
+
         public DbSet<ActionAdventureShowsAndMovies> ActionAdventureShowsAndMovies { get; set; }
 
         public DbSet<AnimationShowsAndMovies> AnimationShowsAndMovies { get; set; }
@@ -80,6 +82,17 @@ namespace DatabaseService.Core
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<LocalizationCodes>(entity =>
+            {
+                entity.Property(e => e.LanguageCode)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.RegionCode)
+                    .IsRequired()
+                    .HasMaxLength(5);
+            });
+
             modelBuilder.Entity<ActionAdventureShowsAndMovies>(entity =>
             {
                 entity.HasOne(d => d.ListItem)
