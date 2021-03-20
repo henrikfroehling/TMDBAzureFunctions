@@ -361,8 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-src/WSIWScheduledRunner/Properties/ServiceDependencies/wsis-scheduled-runner - Zip Deploy/storage1.arm.json
-
-src/Functions/TMDBDataCollector/Properties/ServiceDependencies/wsis-scheduled-runner - Zip Deploy/
-
-src/Functions/TMDBDataCollector/Properties/serviceDependencies.wsis-scheduled-runner - Zip Deploy.json
+src/Functions/TMDBDataCollector/Properties/serviceDependencies.tmdb-data-collector - Zip Deploy.json
+src/Functions/TMDBDataCollector/Properties/ServiceDependencies/tmdb-data-collector - Zip Deploy/appInsights1.arm.json
+src/Functions/TMDBDataCollector/Properties/ServiceDependencies/tmdb-data-collector - Zip Deploy/storage1.arm.json
