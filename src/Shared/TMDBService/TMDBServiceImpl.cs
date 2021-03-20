@@ -90,9 +90,9 @@ namespace TMDBService
         private readonly List<ListItem> _workplaceComedyShowsAndMovies;
         private readonly List<ListItem> _medicalDramaShowsAndMovies;
 
-        public TMDBServiceImpl(ILogger logger)
+        public TMDBServiceImpl(string apiKey, ILogger logger)
         {
-            _apiKey = Environment.GetEnvironmentVariable("tmdb_api_key");
+            _apiKey = apiKey;
             _logger = logger;
             _tmdbApiClient = RestService.For<ITMDBApiClient>(BASE_URL);
             _configuration = new Configuration();

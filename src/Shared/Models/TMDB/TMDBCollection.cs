@@ -4,6 +4,12 @@ namespace Models.TMDB
 {
     public class TMDBCollection
     {
+        public Configuration Configuration { get; set; }
+
+        public List<Genre> ShowGenres { get; set; }
+
+        public List<Genre> MovieGenres { get; set; }
+
         public List<ListItem> TrendingShowsAndMovies { get; set; }
         
         public List<ListItem> ComedyShowsAndMovies { get; set; }
