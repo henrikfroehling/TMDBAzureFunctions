@@ -532,6 +532,18 @@ namespace DatabaseService.Core
                 entity.Property(e => e.TimeStamp)
                     .HasColumnType("DATETIME")
                     .HasDefaultValueSql("(GETUTCDATE())");
+
+                entity.Property(e => e.LanguageCode)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.RegionCode)
+                    .IsRequired()
+                    .HasMaxLength(5);
+
+                entity.Property(e => e.SnapshotAsJSON)
+                    .IsRequired()
+                    .HasColumnType("NTEXT");
             });
 
             modelBuilder.Entity<TeenDramaShowsAndMovies>(entity =>

@@ -1,6 +1,9 @@
 CREATE TABLE Snapshots
 (
 	Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	LanguageCode NVARCHAR(10) NOT NULL,
+	RegionCode NVARCHAR(5) NOT NULL,
+	SnapshotAsJSON NTEXT NOT NULL,
 	TimeStamp DATETIME NOT NULL DEFAULT GETUTCDATE()
 );
 
@@ -59,7 +62,7 @@ CREATE TABLE MovieGenres
 CREATE TABLE ListItems
 (
 	Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-	ItemType INT NOT NULL, /* Show = 0, Movie = 1 */
+	ItemType INT NOT NULL, /* Show = 1, Movie = 2 */
 	ItemId INT NOT NULL,
 	Title NVARCHAR(150) NOT NULL,
 	Overview NTEXT NOT NULL,

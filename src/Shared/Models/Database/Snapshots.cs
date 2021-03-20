@@ -41,6 +41,12 @@ namespace Models.Database
 
         public int Id { get; set; }
 
+        public string LanguageCode { get; set; }
+
+        public string RegionCode { get; set; }
+
+        public string SnapshotAsJSON { get; set; }
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime TimeStamp { get; set; }
 
