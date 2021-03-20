@@ -2,7 +2,7 @@
 using Models.Database;
 using Models.TMDB;
 using System.Collections.Generic;
-using System.Net;
+using System.Linq;
 
 namespace DatabaseService
 {
@@ -18,9 +18,19 @@ namespace DatabaseService
             _context = new DatabaseContext(_databaseConnection);
         }
 
+        public List<LocalizationCodes> GetLocalizationCodes()
+        {
+            return _context.LocalizationCodes.ToList();
+        }
+
         public void SaveCollectedDataToDatabase(TMDBCollection collection)
         {
-            var snapshot = new Snapshots();
+            var snapshot = new Snapshots
+            {
+                LanguageCode = collection.LanguageCode,
+                RegionCode = collection.RegionCode,
+                SnapshotAsJSON = string.Empty
+            };
 
             AddConfiguration(snapshot, collection);
             AddShowGenres(snapshot, collection);

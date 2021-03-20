@@ -4,6 +4,10 @@ namespace Models.TMDB
 {
     public class TMDBCollection
     {
+        public string LanguageCode { get; set; }
+
+        public string RegionCode { get; set; }
+
         public Configuration Configuration { get; set; }
 
         public List<Genre> ShowGenres { get; set; }

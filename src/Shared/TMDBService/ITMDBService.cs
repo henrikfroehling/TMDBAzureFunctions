@@ -8,60 +8,62 @@ namespace TMDBService
     {
         Configuration Configuration { get; }
 
-        Dictionary<int, Genre> ShowGenres { get; }
-
-        Dictionary<int, Genre> MovieGenres { get; }
-
         Task InitializeAsync();
 
-        Task<List<ListItem>> GetTrendingShowsAndMoviesAsync(int pageCount = 1);
+        Task<Dictionary<int, Genre>> GetShowGenresAsync(string languageCode);
 
-        Task<List<ListItem>> GetComedyShowsAndMoviesAsync(int pageCount = 1);
+        Task<Dictionary<int, Genre>> GetMovieGenresAsync(string languageCode);
 
-        Task<List<ListItem>> GetActionAndAdventureShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetTrendingShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetDramaShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetComedyShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetAnimationShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetActionAndAdventureShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetScifiShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetDramaShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetCrimeShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetAnimationShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetMysteryShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetScifiShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetThrillerShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetCrimeShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetHorrorShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetMysteryShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetFamilyShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetThrillerShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetKidsShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetHorrorShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetFantasyMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetFamilyShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetWesternShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetKidsShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetHistoryShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetFantasyMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetRomanceShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetWesternShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetWarShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetHistoryShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetDocumentaryShowsAndMovies(int pageCount = 1);
+        Task<List<ListItem>> GetRomanceShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetSitcomShowsAsync(int pageCount = 1);
+        Task<List<ListItem>> GetWarShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetAnthologyShowsAsync(int pageCount = 1);
+        Task<List<ListItem>> GetDocumentaryShowsAndMovies(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetAnimeShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetSitcomShowsAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetTeenDramaShowsAndMoviesAsync(int pageCount = 1);
+        Task<List<ListItem>> GetAnthologyShowsAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetHistoricalDramaShowsAndMovies(int pageCount = 1);
+        Task<List<ListItem>> GetAnimeShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetWorkplaceComedyShowsAndMovies(int pageCount = 1);
+        Task<List<ListItem>> GetTeenDramaShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
-        Task<List<ListItem>> GetMedicalDramaShowsAndMovies(int pageCount = 1);
+        Task<List<ListItem>> GetHistoricalDramaShowsAndMovies(string languageCode, string regionCode, int pageCount = 1);
+
+        Task<List<ListItem>> GetWorkplaceComedyShowsAndMovies(string languageCode, string regionCode, int pageCount = 1);
+
+        Task<List<ListItem>> GetMedicalDramaShowsAndMovies(string languageCode, string regionCode, int pageCount = 1);
+
+        void Clear();
     }
 }
