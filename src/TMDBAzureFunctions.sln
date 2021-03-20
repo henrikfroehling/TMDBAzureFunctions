@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{89D166F1-BF0B-4EA3-8561-9E8C4474D62F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLStatements", "SQLStatements", "{20CA40A6-F57C-466E-A02B-3051238051AF}"
+	ProjectSection(SolutionItems) = preProject
+		SQLStatements\CREATE_DATABASE_SCHEMA.sql = SQLStatements\CREATE_DATABASE_SCHEMA.sql
+		SQLStatements\CREATE_DATABASE_TRIGGER_ListItems.sql = SQLStatements\CREATE_DATABASE_TRIGGER_ListItems.sql
+		SQLStatements\CREATE_DATABASE_TRIGGER_Snapshots.sql = SQLStatements\CREATE_DATABASE_TRIGGER_Snapshots.sql
+		SQLStatements\DROP_DATABASE_TABLES.sql = SQLStatements\DROP_DATABASE_TABLES.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functions", "Functions", "{555A15E0-C89A-499C-9999-4A83BDACE746}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{1F57D90D-2DF1-41EC-8C5F-633E156E1DFF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Shared\Models\Models.csproj", "{8C18E8C7-C93B-4285-9CD7-D59C9935E325}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMDBService", "Shared\TMDBService\TMDBService.csproj", "{4DDA974E-0D62-4F29-B5BD-E498765B0A41}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseService", "Shared\DatabaseService\DatabaseService.csproj", "{6E3D36E0-0C38-485A-9E71-1C054FE22DD6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMDBDataCollector", "Functions\TMDBDataCollector\TMDBDataCollector.csproj", "{FEE2368A-EAA5-4CFD-AD89-B0090242C304}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C18E8C7-C93B-4285-9CD7-D59C9935E325}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C18E8C7-C93B-4285-9CD7-D59C9935E325}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C18E8C7-C93B-4285-9CD7-D59C9935E325}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C18E8C7-C93B-4285-9CD7-D59C9935E325}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DDA974E-0D62-4F29-B5BD-E498765B0A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DDA974E-0D62-4F29-B5BD-E498765B0A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DDA974E-0D62-4F29-B5BD-E498765B0A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DDA974E-0D62-4F29-B5BD-E498765B0A41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E3D36E0-0C38-485A-9E71-1C054FE22DD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E3D36E0-0C38-485A-9E71-1C054FE22DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E3D36E0-0C38-485A-9E71-1C054FE22DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E3D36E0-0C38-485A-9E71-1C054FE22DD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEE2368A-EAA5-4CFD-AD89-B0090242C304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEE2368A-EAA5-4CFD-AD89-B0090242C304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEE2368A-EAA5-4CFD-AD89-B0090242C304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEE2368A-EAA5-4CFD-AD89-B0090242C304}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{20CA40A6-F57C-466E-A02B-3051238051AF} = {89D166F1-BF0B-4EA3-8561-9E8C4474D62F}
+		{8C18E8C7-C93B-4285-9CD7-D59C9935E325} = {1F57D90D-2DF1-41EC-8C5F-633E156E1DFF}
+		{4DDA974E-0D62-4F29-B5BD-E498765B0A41} = {1F57D90D-2DF1-41EC-8C5F-633E156E1DFF}
+		{6E3D36E0-0C38-485A-9E71-1C054FE22DD6} = {1F57D90D-2DF1-41EC-8C5F-633E156E1DFF}
+		{FEE2368A-EAA5-4CFD-AD89-B0090242C304} = {555A15E0-C89A-499C-9999-4A83BDACE746}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {18DD379E-D4FC-4227-9A98-668533FCB170}
+	EndGlobalSection
+EndGlobal
