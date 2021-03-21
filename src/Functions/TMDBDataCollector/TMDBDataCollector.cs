@@ -19,7 +19,7 @@ namespace TMDBDataCollector
         private static string _databaseConnection;
 
         [FunctionName("TMDBDataCollector")]
-        public static async Task Run([TimerTrigger("0 0 * * * *" /* runs every hour */
+        public static async Task Run([TimerTrigger("0 0 */2 * * *" /* runs every second hour */
 #if DEBUG
             , RunOnStartup = true
 #endif
