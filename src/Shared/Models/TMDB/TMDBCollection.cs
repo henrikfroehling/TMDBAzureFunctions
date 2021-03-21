@@ -8,7 +8,7 @@ namespace Models.TMDB
 
         public string RegionCode { get; set; }
 
-        public string SnapshotAsJSON { get; set; }
+        public string CompressedBase64JSONData { get; set; }
 
         public Configuration Configuration { get; set; }
 

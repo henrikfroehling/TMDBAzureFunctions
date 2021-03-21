@@ -45,7 +45,7 @@ namespace Models.Database
 
         public string RegionCode { get; set; }
 
-        public string SnapshotAsJSON { get; set; }
+        public string CompressedBase64JSONData { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime TimeStamp { get; set; }

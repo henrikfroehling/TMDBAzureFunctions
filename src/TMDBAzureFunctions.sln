@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseService", "Shared\D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMDBDataCollector", "Functions\TMDBDataCollector\TMDBDataCollector.csproj", "{FEE2368A-EAA5-4CFD-AD89-B0090242C304}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompressionService", "Shared\CompressionService\CompressionService.csproj", "{66C30347-C8FC-48FC-ABE1-06D17AEFCA54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{FEE2368A-EAA5-4CFD-AD89-B0090242C304}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEE2368A-EAA5-4CFD-AD89-B0090242C304}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEE2368A-EAA5-4CFD-AD89-B0090242C304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66C30347-C8FC-48FC-ABE1-06D17AEFCA54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66C30347-C8FC-48FC-ABE1-06D17AEFCA54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66C30347-C8FC-48FC-ABE1-06D17AEFCA54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66C30347-C8FC-48FC-ABE1-06D17AEFCA54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{4DDA974E-0D62-4F29-B5BD-E498765B0A41} = {1F57D90D-2DF1-41EC-8C5F-633E156E1DFF}
 		{6E3D36E0-0C38-485A-9E71-1C054FE22DD6} = {1F57D90D-2DF1-41EC-8C5F-633E156E1DFF}
 		{FEE2368A-EAA5-4CFD-AD89-B0090242C304} = {555A15E0-C89A-499C-9999-4A83BDACE746}
+		{66C30347-C8FC-48FC-ABE1-06D17AEFCA54} = {1F57D90D-2DF1-41EC-8C5F-633E156E1DFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {18DD379E-D4FC-4227-9A98-668533FCB170}

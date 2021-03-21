@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CompressionService;
+using Microsoft.Extensions.Logging;
 using Models.TMDB;
 using Newtonsoft.Json;
 using System;
@@ -62,7 +63,10 @@ namespace TMDBDataCollector.Utils
         {
             logger.LogInformation($"DataCollector creating json collection started at: {DateTime.Now}");
             RandomizedJSONCollection jsonCollection = CreateRandomizedCollection(collection);
-            collection.SnapshotAsJSON = JsonConvert.SerializeObject(jsonCollection);
+            string json = JsonConvert.SerializeObject(jsonCollection);
+            var compressionService = new CompressionServiceImpl();
+            string compressedJsonData = compressionService.CompressJSONAsBase64(json);
+            collection.CompressedBase64JSONData = compressedJsonData;
             logger.LogInformation($"DataCollector creating json collection finished at: {DateTime.Now}");
         }
 

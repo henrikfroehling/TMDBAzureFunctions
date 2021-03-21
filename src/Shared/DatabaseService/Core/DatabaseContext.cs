@@ -554,7 +554,7 @@ namespace DatabaseService.Core
                     .IsRequired()
                     .HasMaxLength(5);
 
-                entity.Property(e => e.SnapshotAsJSON)
+                entity.Property(e => e.CompressedBase64JSONData)
                     .IsRequired()
                     .HasColumnType("NTEXT");
             });
