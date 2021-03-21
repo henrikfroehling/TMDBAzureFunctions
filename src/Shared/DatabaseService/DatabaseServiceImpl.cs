@@ -1,6 +1,7 @@
 ﻿using DatabaseService.Core;
 using Models.Database;
 using Models.TMDB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -38,6 +39,16 @@ namespace DatabaseService
             AddListItems(snapshot, collection);
 
             _context.Snapshots.Add(snapshot);
+            _context.SaveChanges();
+        }
+
+        public void RemoveOldDataFromDatabase()
+        {
+            List<Snapshots> snapshots = _context.Snapshots.ToList();
+
+            // Get all snapshots which are older than a day
+            snapshots = snapshots.Where(s => (s.TimeStamp - DateTime.UtcNow).TotalDays > 1).ToList();
+            _context.RemoveRange(snapshots);
             _context.SaveChanges();
         }
 

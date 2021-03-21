@@ -10,5 +10,7 @@ namespace DatabaseService
         List<LocalizationCodes> GetLocalizationCodes();
 
         void SaveCollectedDataToDatabase(TMDBCollection collection);
+
+        void RemoveOldDataFromDatabase();
     }
 }
