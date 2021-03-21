@@ -29,7 +29,7 @@ namespace DatabaseService
             {
                 LanguageCode = collection.LanguageCode,
                 RegionCode = collection.RegionCode,
-                SnapshotAsJSON = string.Empty
+                SnapshotAsJSON = collection.SnapshotAsJSON
             };
 
             AddConfiguration(snapshot, collection);

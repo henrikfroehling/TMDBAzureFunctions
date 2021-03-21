@@ -1,12 +1,16 @@
-﻿using Models.TMDB;
+﻿using Microsoft.Extensions.Logging;
+using Models.TMDB;
+using System;
 using System.Collections.Generic;
 
 namespace TMDBDataCollector.Utils
 {
     public static class CollectionFilter
     {
-        public static void FilterCollections(TMDBCollection collection)
+        public static void FilterCollections(TMDBCollection collection, ILogger logger)
         {
+            logger.LogInformation($"TMDBDataCollector filtering collections started at: {DateTime.Now}");
+
             if (collection != null)
             {
                 FilterCollection(collection.TrendingShowsAndMovies);
@@ -35,6 +39,8 @@ namespace TMDBDataCollector.Utils
                 FilterCollection(collection.WorkplaceComedyShowsAndMovies);
                 FilterCollection(collection.MedicalDramaShowsAndMovies);
             }
+
+            logger.LogInformation($"TMDBDataCollector filtering collections finished at: {DateTime.Now}");
         }
 
         private static void FilterCollection(List<ListItem> collection)

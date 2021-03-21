@@ -30,17 +30,8 @@ namespace TMDBDataCollector
             _tmdbService = new TMDBServiceImpl(_tmdbApiKey, log);
 
             log.LogInformation($"TMDBDataCollector function started at: {DateTime.Now}");
-            log.LogInformation($"TMDBDataCollector retrieving localization codes started at: {DateTime.Now}");
 
-            List<LocalizationCodes> localizationCodes = null;
-
-            using (var databaseService = new DatabaseServiceImpl(_databaseConnection))
-            {
-                localizationCodes = databaseService.GetLocalizationCodes();
-            }
-
-            log.LogInformation($"TMDBDataCollector retrieving localization codes finished at: {DateTime.Now}");
-
+            List<LocalizationCodes> localizationCodes = GetLocalizationCodes(log);
             await _tmdbService.InitializeAsync();
 
             if (localizationCodes != null)
@@ -48,29 +39,28 @@ namespace TMDBDataCollector
                 foreach (LocalizationCodes entry in localizationCodes)
                 {
                     _tmdbService.Clear();
-
-                    log.LogInformation($"TMDBDataCollector collecting data for language \"{entry.LanguageCode}\" started at: {DateTime.Now}");
-                    _tmdbCollection = await DataCollector.CollectDataAsync(_tmdbService, entry.LanguageCode, entry.RegionCode);
-
-                    log.LogInformation($"TMDBDataCollector filtering collections started at: {DateTime.Now}");
-                    CollectionFilter.FilterCollections(_tmdbCollection);
-                    log.LogInformation($"TMDBDataCollector filtering collections finished at: {DateTime.Now}");
-
+                    _tmdbCollection = await DataCollector.CollectDataAsync(_tmdbService, log, entry.LanguageCode, entry.RegionCode);
                     WriteIntoDatabase(_tmdbCollection, log);
-                    log.LogInformation($"TMDBDataCollector collecting data for language \"{entry.LanguageCode}\" finished at: {DateTime.Now}");
                 }
             }
 
             log.LogInformation($"TMDBDataCollector function finished at: {DateTime.Now}");
         }
 
+        private static List<LocalizationCodes> GetLocalizationCodes(ILogger logger)
+        {
+            logger.LogInformation($"TMDBDataCollector retrieving localization codes started at: {DateTime.Now}");
+            using var databaseService = new DatabaseServiceImpl(_databaseConnection);
+            List<LocalizationCodes> localizationCodes = databaseService.GetLocalizationCodes();
+            logger.LogInformation($"TMDBDataCollector retrieving localization codes finished at: {DateTime.Now}");
+            return localizationCodes;
+        }
+
         private static void WriteIntoDatabase(TMDBCollection collection, ILogger logger)
         {
             logger.LogInformation($"TMDBDataCollector writing data into database started at: {DateTime.Now}");
-            
             using IDatabaseService databaseService = new DatabaseServiceImpl(_databaseConnection);
             databaseService.SaveCollectedDataToDatabase(collection);
-            
             logger.LogInformation($"TMDBDataCollector writing data into database finished at: {DateTime.Now}");
         }
     }
