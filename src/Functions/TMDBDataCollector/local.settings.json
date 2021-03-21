@@ -5,10 +5,10 @@
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
     "database_connection": "",
     "tmdb_api_key": "",
-    "FUNCTIONS_EXTENSION_VERSION": "",
+    "FUNCTIONS_EXTENSION_VERSION": "~3",
     "APPINSIGHTS_CONNECTIONSTRING": "",
-    "ApplicationInsightsAgent_EXTENSION_VERSION": "",
-    "DiagnosticServices_EXTENSION_VERSION": "",
-    "APPINSIGHTS_PROFILERFEATURE_VERSION": ""
+    "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
+    "DiagnosticServices_EXTENSION_VERSION": "~3",
+    "APPINSIGHTS_PROFILERFEATURE_VERSION": "1.0.0"
   }
 }

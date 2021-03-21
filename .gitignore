@@ -364,3 +364,9 @@ FodyWeavers.xsd
 src/Functions/TMDBDataCollector/Properties/serviceDependencies.tmdb-data-collector - Zip Deploy.json
 src/Functions/TMDBDataCollector/Properties/ServiceDependencies/tmdb-data-collector - Zip Deploy/appInsights1.arm.json
 src/Functions/TMDBDataCollector/Properties/ServiceDependencies/tmdb-data-collector - Zip Deploy/storage1.arm.json
+src/Functions/TMDBDataCollector/Properties/ServiceDependencies/tmdb-data-collector - Zip Deploy/profile.arm.json
+
+src/Functions/TMDBDataCleaner/Properties/serviceDependencies.tmdb-data-cleaner - Zip Deploy.json
+src/Functions/TMDBDataCleaner/Properties/ServiceDependencies/tmdb-data-cleaner - Zip Deploy/appInsights1.arm.json
+src/Functions/TMDBDataCleaner/Properties/ServiceDependencies/tmdb-data-cleaner - Zip Deploy/storage1.arm.json
+src/Functions/TMDBDataCleaner/Properties/ServiceDependencies/tmdb-data-cleaner - Zip Deploy/profile.arm.json

@@ -3,6 +3,11 @@
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "database_connection": ""
+    "database_connection": "",
+    "FUNCTIONS_EXTENSION_VERSION": "~3",
+    "APPINSIGHTS_CONNECTIONSTRING": "",
+    "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
+    "DiagnosticServices_EXTENSION_VERSION": "~3",
+    "APPINSIGHTS_PROFILERFEATURE_VERSION": "1.0.0"
   }
 }
