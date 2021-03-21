@@ -70,6 +70,7 @@ namespace TMDBDataCollector.Utils
         {
             var randomizedCollection = new RandomizedJSONCollection
             {
+                Configuration = collection.Configuration,
                 ShowGenres = collection.ShowGenres,
                 MovieGenres = collection.MovieGenres,
                 ActionAdventureShowsAndMovies = collection.ActionAdventureShowsAndMovies,

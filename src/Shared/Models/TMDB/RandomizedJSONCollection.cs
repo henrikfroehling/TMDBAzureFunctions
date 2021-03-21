@@ -4,6 +4,8 @@ namespace Models.TMDB
 {
     public class RandomizedJSONCollection
     {
+        public Configuration Configuration { get; set; }
+
         public List<Genre> ShowGenres { get; set; }
 
         public List<Genre> MovieGenres { get; set; }
