@@ -11,7 +11,7 @@ namespace TMDBDataCollector.Utils
 {
     public class DataCollector
     {
-        private const int NUMBER_OF_PAGES = 2;
+        private const int NUMBER_OF_PAGES = 1;
 
         public static async Task<TMDBCollection> CollectDataAsync(ITMDBService tmdbService, ILogger logger, string languageCode, string regionCode)
         {
