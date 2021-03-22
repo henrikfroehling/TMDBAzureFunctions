@@ -12,5 +12,7 @@ namespace DatabaseService
         void SaveCollectedDataToDatabase(TMDBCollection collection);
 
         void RemoveOldDataFromDatabase();
+
+        void WriteDailyDownloadsIntoDatabase(string dailyDownloadCollectionsJSON, string dailyDownloadNetworksJSON, string dailyDownloadKeywordsJSON);
     }
 }

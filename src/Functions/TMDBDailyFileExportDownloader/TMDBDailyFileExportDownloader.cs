@@ -1,4 +1,5 @@
 using CompressionService;
+using DatabaseService;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using Models.TMDB;
@@ -17,6 +18,8 @@ namespace TMDBDailyFileExportDownloader
             NETWORK_IDS,
             KEYWORD_IDS
         }
+
+        private static string _databaseConnection;
 
         private const string FILE_EXPORT_BASE_PATH = "http://files.tmdb.org/p/exports/";
         private const string COLLECTION_IDS_EXPORT_SUBPATH = "collection_ids_";
@@ -38,11 +41,12 @@ namespace TMDBDailyFileExportDownloader
 #endif
             )]TimerInfo myTimer, ILogger log)
         {
+            _databaseConnection = Environment.GetEnvironmentVariable("database_connection");
             log.LogInformation($"TMDBDailyFileExportDownloader function started at: {DateTime.Now}");
 
-            List<DailyDownloadCollection> dailyDownloadCollections;
-            List<DailyDownloadNetwork> dailyDownloadNetworks;
-            List<DailyDownloadKeyword> dailyDownloadKeywords;
+            List<DailyDownloadCollection> dailyDownloadCollections = null;
+            List<DailyDownloadNetwork> dailyDownloadNetworks = null;
+            List<DailyDownloadKeyword> dailyDownloadKeywords = null;
 
             foreach (FileType fileType in FILE_TYPES)
             {
@@ -64,6 +68,8 @@ namespace TMDBDailyFileExportDownloader
                     }
                 }
             }
+
+            WriteDailyDownloadsIntoDatabase(dailyDownloadCollections, dailyDownloadNetworks, dailyDownloadKeywords, log);
 
             log.LogInformation($"TMDBDailyFileExportDownloader function finished at: {DateTime.Now}");
         }
@@ -125,6 +131,41 @@ namespace TMDBDailyFileExportDownloader
             }
 
             return dailyDownloadItems;
+        }
+
+        private static void WriteDailyDownloadsIntoDatabase(List<DailyDownloadCollection> dailyDownloadCollections, List<DailyDownloadNetwork> dailyDownloadNetworks,
+                                                            List<DailyDownloadKeyword> dailyDownloadKeywords, ILogger logger)
+        {
+            logger.LogInformation($"TMDBDailyFileExportDownloader writing daily downloads into database started at: {DateTime.Now}");
+
+            string dailyDownloadCollectionsJSON = string.Empty;
+            string dailyDownloadNetworksJSON = string.Empty;
+            string dailyDownloadKeywordsJSON = string.Empty;
+
+            var compressionService = new CompressionServiceImpl();
+
+            if (dailyDownloadCollections != null)
+            {
+                string json = JsonConvert.SerializeObject(dailyDownloadCollections);
+                dailyDownloadCollectionsJSON = compressionService.CompressJSONAsBase64(json);
+            }
+
+            if (dailyDownloadNetworks != null)
+            {
+                string json = JsonConvert.SerializeObject(dailyDownloadNetworks);
+                dailyDownloadNetworksJSON = compressionService.CompressJSONAsBase64(json);
+            }
+
+            if (dailyDownloadKeywords != null)
+            {
+                string json = JsonConvert.SerializeObject(dailyDownloadKeywords);
+                dailyDownloadKeywordsJSON = compressionService.CompressJSONAsBase64(json);
+            }
+
+            using var databaseService = new DatabaseServiceImpl(_databaseConnection);
+            databaseService.WriteDailyDownloadsIntoDatabase(dailyDownloadCollectionsJSON, dailyDownloadNetworksJSON, dailyDownloadKeywordsJSON);
+
+            logger.LogInformation($"TMDBDailyFileExportDownloader writing daily downloads into database finished at: {DateTime.Now}");
         }
     }
 }

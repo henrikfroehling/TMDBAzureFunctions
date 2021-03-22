@@ -9,6 +9,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\CompressionService\CompressionService.csproj" />
+    <ProjectReference Include="..\..\Shared\DatabaseService\DatabaseService.csproj" />
     <ProjectReference Include="..\..\Shared\Models\Models.csproj" />
   </ItemGroup>
   <ItemGroup>

@@ -52,6 +52,19 @@ namespace DatabaseService
             _context.SaveChanges();
         }
 
+        public void WriteDailyDownloadsIntoDatabase(string dailyDownloadCollectionsJSON, string dailyDownloadNetworksJSON, string dailyDownloadKeywordsJSON)
+        {
+            var dailyDownloads = new DailyDownloads
+            {
+                CollectionIdsCompressedBase64JSONData = dailyDownloadCollectionsJSON,
+                NetworkIdsCompressedBase64JSONData = dailyDownloadNetworksJSON,
+                KeywordIdsCompressedBase64JSONData = dailyDownloadKeywordsJSON
+            };
+
+            _context.DailyDownloads.Add(dailyDownloads);
+            _context.SaveChanges();
+        }
+
         public void Dispose() => Dispose(true);
 
         protected virtual void Dispose(bool disposing)
