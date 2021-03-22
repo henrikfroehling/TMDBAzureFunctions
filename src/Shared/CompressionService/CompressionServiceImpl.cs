@@ -20,12 +20,17 @@ namespace CompressionService
         public string DecompressBase64ToJSON(string data)
         {
             byte[] compressedData = Convert.FromBase64String(data);
+            return DecompressToJson(compressedData);
+        }
+
+        public string DecompressToJson(byte[] compressedData)
+        {
             using var memory = new MemoryStream(compressedData);
             using var gzip = new GZipStream(memory, CompressionMode.Decompress);
-            
+
             const int bufferSize = 4096;
             byte[] buffer = new byte[bufferSize];
-            
+
             using var memoryBuffer = new MemoryStream();
             {
                 int count = 0;
