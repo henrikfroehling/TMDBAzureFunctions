@@ -65,6 +65,13 @@ namespace DatabaseService
             _context.SaveChanges();
         }
 
+        public void DeleteDailyDownloads()
+        {
+            List<DailyDownloads> currentDailyDownloads = _context.DailyDownloads.ToList();
+            _context.RemoveRange(currentDailyDownloads);
+            _context.SaveChanges();
+        }
+
         public void Dispose() => Dispose(true);
 
         protected virtual void Dispose(bool disposing)

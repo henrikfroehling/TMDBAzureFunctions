@@ -44,6 +44,8 @@ namespace TMDBDailyFileExportDownloader
             _databaseConnection = Environment.GetEnvironmentVariable("database_connection");
             log.LogInformation($"TMDBDailyFileExportDownloader function started at: {DateTime.Now}");
 
+            DeleteCurrentDailyDownloadsFromDatabase(log);
+
             List<DailyDownloadCollection> dailyDownloadCollections = null;
             List<DailyDownloadNetwork> dailyDownloadNetworks = null;
             List<DailyDownloadKeyword> dailyDownloadKeywords = null;
@@ -131,6 +133,16 @@ namespace TMDBDailyFileExportDownloader
             }
 
             return dailyDownloadItems;
+        }
+
+        private static void DeleteCurrentDailyDownloadsFromDatabase(ILogger logger)
+        {
+            logger.LogInformation($"TMDBDailyFileExportDownloader deleting current daily downloads from database started at: {DateTime.Now}");
+
+            using var databaseService = new DatabaseServiceImpl(_databaseConnection);
+            databaseService.DeleteDailyDownloads();
+
+            logger.LogInformation($"TMDBDailyFileExportDownloader deleting current daily downloads from database finished at: {DateTime.Now}");
         }
 
         private static void WriteDailyDownloadsIntoDatabase(List<DailyDownloadCollection> dailyDownloadCollections, List<DailyDownloadNetwork> dailyDownloadNetworks,

@@ -14,5 +14,7 @@ namespace DatabaseService
         void RemoveOldDataFromDatabase();
 
         void WriteDailyDownloadsIntoDatabase(string dailyDownloadCollectionsJSON, string dailyDownloadNetworksJSON, string dailyDownloadKeywordsJSON);
+
+        void DeleteDailyDownloads();
     }
 }
