@@ -4,6 +4,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31019.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{89D166F1-BF0B-4EA3-8561-9E8C4474D62F}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\LICENSE.md = ..\LICENSE.md
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLStatements", "SQLStatements", "{20CA40A6-F57C-466E-A02B-3051238051AF}"
 	ProjectSection(SolutionItems) = preProject
@@ -27,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMDBDataCollector", "Functi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompressionService", "Shared\CompressionService\CompressionService.csproj", "{66C30347-C8FC-48FC-ABE1-06D17AEFCA54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMDBDataCleaner", "Functions\TMDBDataCleaner\TMDBDataCleaner.csproj", "{823E5343-BF8A-42E5-AB30-DECE69AF5650}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMDBDataCleaner", "Functions\TMDBDataCleaner\TMDBDataCleaner.csproj", "{823E5343-BF8A-42E5-AB30-DECE69AF5650}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
