@@ -85,11 +85,18 @@ namespace TMDBDailyFileExportDownloader
                 using var webClient = new WebClient();
                 var compressionService = new CompressionServiceImpl();
 
-                logger.LogInformation($"TMDBDailyFileExportDownloader downloading file \"{downloadFilename}\" started at: {DateTime.Now}");
-                byte[] fileData = webClient.DownloadData(downloadFilename);
-                logger.LogInformation($"TMDBDailyFileExportDownloader downloading file \"{downloadFilename}\" successfully finished at: {DateTime.Now}");
+                try
+                {
+                    logger.LogInformation($"TMDBDailyFileExportDownloader downloading file \"{downloadFilename}\" started at: {DateTime.Now}");
+                    byte[] fileData = webClient.DownloadData(downloadFilename);
+                    logger.LogInformation($"TMDBDailyFileExportDownloader downloading file \"{downloadFilename}\" successfully finished at: {DateTime.Now}");
 
-                return compressionService.DecompressToJson(fileData);
+                    return compressionService.DecompressToJson(fileData);
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError(ex, $"error on downloading \"{downloadFilename}\"");
+                }
             }
 
             return string.Empty;
@@ -174,8 +181,11 @@ namespace TMDBDailyFileExportDownloader
                 dailyDownloadKeywordsJSON = compressionService.CompressJSONAsBase64(json);
             }
 
-            using var databaseService = new DatabaseServiceImpl(_databaseConnection);
-            databaseService.WriteDailyDownloadsIntoDatabase(dailyDownloadCollectionsJSON, dailyDownloadNetworksJSON, dailyDownloadKeywordsJSON);
+            if (!string.IsNullOrEmpty(dailyDownloadCollectionsJSON) && !string.IsNullOrEmpty(dailyDownloadNetworksJSON) && !string.IsNullOrEmpty(dailyDownloadKeywordsJSON))
+            {
+                using var databaseService = new DatabaseServiceImpl(_databaseConnection);
+                databaseService.WriteDailyDownloadsIntoDatabase(dailyDownloadCollectionsJSON, dailyDownloadNetworksJSON, dailyDownloadKeywordsJSON);
+            }
 
             logger.LogInformation($"TMDBDailyFileExportDownloader writing daily downloads into database finished at: {DateTime.Now}");
         }
