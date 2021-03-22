@@ -10,10 +10,11 @@ namespace CompressionService
         public string CompressJSONAsBase64(string json)
         {
             byte[] jsonData = Encoding.UTF8.GetBytes(json);
-            using var memory = new MemoryStream();
-            using var gzip = new GZipStream(memory, CompressionMode.Compress, true);
-            gzip.Write(jsonData, 0, jsonData.Length);
-            byte[] compressedData = memory.ToArray();
+            using var memory = new MemoryStream(jsonData);
+            using var compressedMemory = new MemoryStream();
+            using var gzip = new GZipStream(compressedMemory, CompressionMode.Compress);
+            memory.CopyTo(gzip);
+            byte[] compressedData = compressedMemory.ToArray();
             return Convert.ToBase64String(compressedData);
         }
 
@@ -27,24 +28,8 @@ namespace CompressionService
         {
             using var memory = new MemoryStream(compressedData);
             using var gzip = new GZipStream(memory, CompressionMode.Decompress);
-
-            const int bufferSize = 4096;
-            byte[] buffer = new byte[bufferSize];
-
             using var memoryBuffer = new MemoryStream();
-            {
-                int count = 0;
-
-                do
-                {
-                    count = gzip.Read(buffer, 0, bufferSize);
-
-                    if (count > 0)
-                        memoryBuffer.Write(buffer, 0, count);
-                }
-                while (count > 0);
-            }
-
+            gzip.CopyTo(memoryBuffer);
             byte[] jsonData = memoryBuffer.ToArray();
             return Encoding.UTF8.GetString(jsonData);
         }
