@@ -7,6 +7,14 @@ CREATE TABLE Snapshots
 	TimeStamp DATETIME NOT NULL DEFAULT GETUTCDATE()
 );
 
+CREATE TABLE DailyDownloads
+(
+	Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	CollectionIdsCompressedBase64JSONData NTEXT NOT NULL,
+	NetworkIdsCompressedBase64JSONData NTEXT NOT NULL,
+	KeywordIdsCompressedBase64JSONData NTEXT NOT NULL
+);
+
 CREATE TABLE LocalizationCodes
 (
 	Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,

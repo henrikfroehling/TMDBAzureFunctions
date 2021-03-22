@@ -12,6 +12,8 @@ namespace DatabaseService.Core
             _databaseConnection = databaseConnection;
         }
 
+        public DbSet<DailyDownloads> DailyDownloads { get; set; }
+
         public DbSet<LocalizationCodes> LocalizationCodes { get; set; }
 
         public DbSet<ActionAdventureShowsAndMovies> ActionAdventureShowsAndMovies { get; set; }
@@ -82,6 +84,21 @@ namespace DatabaseService.Core
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<DailyDownloads>(entity =>
+            {
+                entity.Property(e => e.CollectionIdsCompressedBase64JSONData)
+                    .IsRequired()
+                    .HasColumnType("NTEXT");
+
+                entity.Property(e => e.NetworkIdsCompressedBase64JSONData)
+                    .IsRequired()
+                    .HasColumnType("NTEXT");
+
+                entity.Property(e => e.KeywordIdsCompressedBase64JSONData)
+                    .IsRequired()
+                    .HasColumnType("NTEXT");
+            });
+
             modelBuilder.Entity<LocalizationCodes>(entity =>
             {
                 entity.Property(e => e.LanguageCode)
