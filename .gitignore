@@ -370,3 +370,8 @@ src/Functions/TMDBDataCleaner/Properties/serviceDependencies.tmdb-data-cleaner -
 src/Functions/TMDBDataCleaner/Properties/ServiceDependencies/tmdb-data-cleaner - Zip Deploy/appInsights1.arm.json
 src/Functions/TMDBDataCleaner/Properties/ServiceDependencies/tmdb-data-cleaner - Zip Deploy/storage1.arm.json
 src/Functions/TMDBDataCleaner/Properties/ServiceDependencies/tmdb-data-cleaner - Zip Deploy/profile.arm.json
+
+src/Functions/TMDBDailyFileExportDownloader/Properties/serviceDependencies.tmdb-daily-file-export-downloader - Zip Deploy.json
+src/Functions/TMDBDailyFileExportDownloader/Properties/ServiceDependencies/tmdb-daily-file-export-downloader - Zip Deploy/appInsights1.arm.json
+src/Functions/TMDBDailyFileExportDownloader/Properties/ServiceDependencies/tmdb-daily-file-export-downloader - Zip Deploy/storage1.arm.json
+src/Functions/TMDBDailyFileExportDownloader/Properties/ServiceDependencies/tmdb-daily-file-export-downloader - Zip Deploy/profile.arm.json
