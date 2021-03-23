@@ -35,7 +35,7 @@ namespace TMDBDailyFileExportDownloader
         };
 
         [FunctionName("TMDBDailyFileExportDownloader")]
-        public static void Run([TimerTrigger("0 0 0 * * *" /* runs every day */
+        public static void Run([TimerTrigger("0 0 9 * * *" /* runs every day at 9 AM*/
 #if DEBUG
             , RunOnStartup = true
 #endif
