@@ -10,7 +10,7 @@ namespace TMDBDataCleaner
         private static string _databaseConnection;
 
         [FunctionName("TMDBDataCleaner")]
-        public static void Run([TimerTrigger("0 0 0 * * *" /* runs every day */
+        public static void Run([TimerTrigger("0 30 4 * * *" /* runs every day at 4:30 AM*/
 #if DEBUG
             , RunOnStartup = true
 #endif
