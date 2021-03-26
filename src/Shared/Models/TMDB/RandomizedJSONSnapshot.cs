@@ -10,7 +10,7 @@ namespace Models.TMDB
 
         public List<Genre> MovieGenres { get; set; }
 
-        public List<ListItem> TrendingShowsAndMovies { get; set; }
+        public List<ListItem> PopularShowsAndMovies { get; set; }
 
         public List<ListItem> ComedyShowsAndMovies { get; set; }
 

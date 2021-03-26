@@ -14,7 +14,7 @@ namespace TMDBService
 
         Task<Dictionary<int, Genre>> GetMovieGenresAsync(string languageCode);
 
-        Task<List<ListItem>> GetTrendingShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
+        Task<List<ListItem>> GetPopularShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 
         Task<List<ListItem>> GetComedyShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1);
 

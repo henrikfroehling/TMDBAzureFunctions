@@ -205,10 +205,10 @@ namespace TMDBService
             return _movieGenres;
         }
 
-        public async Task<List<ListItem>> GetTrendingShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1)
+        public async Task<List<ListItem>> GetPopularShowsAndMoviesAsync(string languageCode, string regionCode, int pageCount = 1)
         {
             Debug.Assert(_isInitialized);
-            _logger.LogInformation($"TMDB Service: retrieving trending shows and movies started at: {DateTime.Now}");
+            _logger.LogInformation($"TMDB Service: retrieving popular shows and movies started at: {DateTime.Now}");
 
             if (_trendingShowsAndMovies.Count == 0)
             {
@@ -216,27 +216,27 @@ namespace TMDBService
                 {
                     for (int page = 1; page <= pageCount; page++)
                     {
-                        TMDBListResponse<TMDBTrendingShowResponse> trendingShows = await _tmdbApiClient.GetTrendingShowsAsync(_apiKey, languageCode, page);
-                        TMDBListResponse<TMDBTrendingMovieResponse> trendingMovies = await _tmdbApiClient.GetTrendingMoviesAsync(_apiKey, languageCode, page);
+                        TMDBListResponse<TMDBPopularShowResponse> popularShows = await _tmdbApiClient.GetPopularShowsAsync(_apiKey, languageCode, regionCode, page);
+                        TMDBListResponse<TMDBPopularMovieResponse> popularMovies = await _tmdbApiClient.GetPopularMoviesAsync(_apiKey, languageCode, regionCode, page);
 
-                        foreach (TMDBTrendingShowResponse show in trendingShows.results)
+                        foreach (TMDBPopularShowResponse show in popularShows.results)
                         {
                             if (show != null)
                                 _trendingShowsAndMovies.Add(CreateListItem(ItemType.Show, show.id, show.name, show.overview, show.backdrop_path, show.poster_path));
                         }
 
-                        foreach (TMDBTrendingMovieResponse movie in trendingMovies.results)
+                        foreach (TMDBPopularMovieResponse movie in popularMovies.results)
                         {
                             if (movie != null)
                                 _trendingShowsAndMovies.Add(CreateListItem(ItemType.Movie, movie.id, movie.title, movie.overview, movie.backdrop_path, movie.poster_path));
                         }
                     }
 
-                    _logger.LogInformation($"TMDB Service: retrieving trending shows and movies successfully finished at: {DateTime.Now}");
+                    _logger.LogInformation($"TMDB Service: retrieving popular shows and movies successfully finished at: {DateTime.Now}");
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, "TMDB Service: error on retrieving trending shows and movies");
+                    _logger.LogError(ex, "TMDB Service: error on retrieving popular shows and movies");
                 }
             }
 

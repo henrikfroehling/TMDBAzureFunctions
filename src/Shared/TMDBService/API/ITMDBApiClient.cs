@@ -17,13 +17,13 @@ namespace TMDBService.API
         [Get("/genre/movie/list?api_key={apiKey}&language={languageCode}")]
         Task<TMDBGenresResponse> GetMovieGenresAsync(string apiKey, string languageCode);
 
-        // trending
+        // popular
 
-        [Get("/trending/tv/day?api_key={apiKey}&language={languageCode}&page={page}")]
-        Task<TMDBListResponse<TMDBTrendingShowResponse>> GetTrendingShowsAsync(string apiKey, string languageCode, int page);
+        [Get("/tv/popular?api_key={apiKey}&language={languageCode}&region={regionCode}&page={page}")]
+        Task<TMDBListResponse<TMDBPopularShowResponse>> GetPopularShowsAsync(string apiKey, string languageCode, string regionCode, int page);
 
-        [Get("/trending/movie/day?api_key={apiKey}&language={languageCode}&page={page}")]
-        Task<TMDBListResponse<TMDBTrendingMovieResponse>> GetTrendingMoviesAsync(string apiKey, string languageCode, int page);
+        [Get("/movie/popular?api_key={apiKey}&language={languageCode}&region={regionCode}&page={page}")]
+        Task<TMDBListResponse<TMDBPopularMovieResponse>> GetPopularMoviesAsync(string apiKey, string languageCode, string regionCode, int page);
 
         // discoverable
 

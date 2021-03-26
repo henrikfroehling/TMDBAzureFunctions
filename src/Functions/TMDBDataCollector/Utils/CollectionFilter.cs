@@ -13,7 +13,7 @@ namespace TMDBDataCollector.Utils
 
             if (tmdbSnapshot != null)
             {
-                FilterCollection(tmdbSnapshot.TrendingShowsAndMovies);
+                FilterCollection(tmdbSnapshot.PopularShowsAndMovies);
                 FilterCollection(tmdbSnapshot.ComedyShowsAndMovies);
                 FilterCollection(tmdbSnapshot.DramaShowsAndMovies);
                 FilterCollection(tmdbSnapshot.ActionAdventureShowsAndMovies);

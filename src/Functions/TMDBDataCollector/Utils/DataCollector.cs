@@ -26,7 +26,7 @@ namespace TMDBDataCollector.Utils
             tmdbSnapshot.Configuration = tmdbService.Configuration;
             tmdbSnapshot.ShowGenres = (await tmdbService.GetShowGenresAsync(languageCode)).Values.ToList();
             tmdbSnapshot.MovieGenres = (await tmdbService.GetMovieGenresAsync(languageCode)).Values.ToList();
-            tmdbSnapshot.TrendingShowsAndMovies = await tmdbService.GetTrendingShowsAndMoviesAsync(languageCode, regionCode, NUMBER_OF_PAGES);
+            tmdbSnapshot.PopularShowsAndMovies = await tmdbService.GetPopularShowsAndMoviesAsync(languageCode, regionCode, NUMBER_OF_PAGES);
             tmdbSnapshot.ComedyShowsAndMovies = await tmdbService.GetComedyShowsAndMoviesAsync(languageCode, regionCode, NUMBER_OF_PAGES);
             tmdbSnapshot.DramaShowsAndMovies = await tmdbService.GetDramaShowsAndMoviesAsync(languageCode, regionCode, NUMBER_OF_PAGES);
             tmdbSnapshot.ActionAdventureShowsAndMovies = await tmdbService.GetActionAndAdventureShowsAndMoviesAsync(languageCode, regionCode, NUMBER_OF_PAGES);
@@ -98,7 +98,7 @@ namespace TMDBDataCollector.Utils
                 SitcomShows = tmdbSnapshot.SitcomShows,
                 TeenDramaShowsAndMovies = tmdbSnapshot.TeenDramaShowsAndMovies,
                 ThrillerShowsAndMovies = tmdbSnapshot.ThrillerShowsAndMovies,
-                TrendingShowsAndMovies = tmdbSnapshot.TrendingShowsAndMovies,
+                PopularShowsAndMovies = tmdbSnapshot.PopularShowsAndMovies,
                 WarShowsAndMovies = tmdbSnapshot.WarShowsAndMovies,
                 WesternShowsAndMovies = tmdbSnapshot.WesternShowsAndMovies,
                 WorkplaceComedyShowsAndMovies = tmdbSnapshot.WorkplaceComedyShowsAndMovies
@@ -125,7 +125,7 @@ namespace TMDBDataCollector.Utils
             jsonSnapshot.SitcomShows.Shuffle();
             jsonSnapshot.TeenDramaShowsAndMovies.Shuffle();
             jsonSnapshot.ThrillerShowsAndMovies.Shuffle();
-            jsonSnapshot.TrendingShowsAndMovies.Shuffle();
+            jsonSnapshot.PopularShowsAndMovies.Shuffle();
             jsonSnapshot.WarShowsAndMovies.Shuffle();
             jsonSnapshot.WesternShowsAndMovies.Shuffle();
             jsonSnapshot.WorkplaceComedyShowsAndMovies.Shuffle();
