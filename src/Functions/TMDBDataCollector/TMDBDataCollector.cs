@@ -14,7 +14,7 @@ namespace TMDBDataCollector
     public static class TMDBDataCollector
     {
         private static ITMDBService _tmdbService;
-        private static TMDBCollection _tmdbCollection;
+        private static TMDBSnapshot _tmdbSnapshot;
         private static string _tmdbApiKey;
         private static string _databaseConnection;
 
@@ -39,8 +39,8 @@ namespace TMDBDataCollector
                 foreach (LocalizationCodes entry in localizationCodes)
                 {
                     _tmdbService.Clear();
-                    _tmdbCollection = await DataCollector.CollectDataAsync(_tmdbService, log, entry.LanguageCode, entry.RegionCode);
-                    WriteIntoDatabase(_tmdbCollection, log);
+                    _tmdbSnapshot = await DataCollector.CollectDataAsync(_tmdbService, log, entry.LanguageCode, entry.RegionCode);
+                    WriteIntoDatabase(_tmdbSnapshot, log);
                 }
             }
 
@@ -56,11 +56,11 @@ namespace TMDBDataCollector
             return localizationCodes;
         }
 
-        private static void WriteIntoDatabase(TMDBCollection collection, ILogger logger)
+        private static void WriteIntoDatabase(TMDBSnapshot tmdbSnapshot, ILogger logger)
         {
             logger.LogInformation($"TMDBDataCollector writing data into database started at: {DateTime.Now}");
             using IDatabaseService databaseService = new DatabaseServiceImpl(_databaseConnection);
-            databaseService.SaveCollectedDataToDatabase(collection);
+            databaseService.SaveCollectedDataToDatabase(tmdbSnapshot);
             logger.LogInformation($"TMDBDataCollector writing data into database finished at: {DateTime.Now}");
         }
     }

@@ -7,37 +7,37 @@ namespace TMDBDataCollector.Utils
 {
     public static class CollectionFilter
     {
-        public static void FilterCollections(TMDBCollection collection, ILogger logger)
+        public static void FilterCollections(TMDBSnapshot tmdbSnapshot, ILogger logger)
         {
             logger.LogInformation($"TMDBDataCollector filtering collections started at: {DateTime.Now}");
 
-            if (collection != null)
+            if (tmdbSnapshot != null)
             {
-                FilterCollection(collection.TrendingShowsAndMovies);
-                FilterCollection(collection.ComedyShowsAndMovies);
-                FilterCollection(collection.DramaShowsAndMovies);
-                FilterCollection(collection.ActionAdventureShowsAndMovies);
-                FilterCollection(collection.AnimationShowsAndMovies);
-                FilterCollection(collection.ScifiShowsAndMovies);
-                FilterCollection(collection.CrimeShowsAndMovies);
-                FilterCollection(collection.MysteryShowsAndMovies);
-                FilterCollection(collection.ThrillerShowsAndMovies);
-                FilterCollection(collection.HorrorShowsAndMovies);
-                FilterCollection(collection.FamilyShowsAndMovies);
-                FilterCollection(collection.KidsShowsAndMovies);
-                FilterCollection(collection.WesternShowsAndMovies);
-                FilterCollection(collection.FantasyMovies);
-                FilterCollection(collection.HistoryShowsAndMovies);
-                FilterCollection(collection.RomanceShowsAndMovies);
-                FilterCollection(collection.WarShowsAndMovies);
-                FilterCollection(collection.DocumentaryShowsAndMovies);
-                FilterCollection(collection.SitcomShows);
-                FilterCollection(collection.AnthologyShows);
-                FilterCollection(collection.AnimeShowsAndMovies);
-                FilterCollection(collection.TeenDramaShowsAndMovies);
-                FilterCollection(collection.HistoricalDramaShowsAndMovies);
-                FilterCollection(collection.WorkplaceComedyShowsAndMovies);
-                FilterCollection(collection.MedicalDramaShowsAndMovies);
+                FilterCollection(tmdbSnapshot.TrendingShowsAndMovies);
+                FilterCollection(tmdbSnapshot.ComedyShowsAndMovies);
+                FilterCollection(tmdbSnapshot.DramaShowsAndMovies);
+                FilterCollection(tmdbSnapshot.ActionAdventureShowsAndMovies);
+                FilterCollection(tmdbSnapshot.AnimationShowsAndMovies);
+                FilterCollection(tmdbSnapshot.ScifiShowsAndMovies);
+                FilterCollection(tmdbSnapshot.CrimeShowsAndMovies);
+                FilterCollection(tmdbSnapshot.MysteryShowsAndMovies);
+                FilterCollection(tmdbSnapshot.ThrillerShowsAndMovies);
+                FilterCollection(tmdbSnapshot.HorrorShowsAndMovies);
+                FilterCollection(tmdbSnapshot.FamilyShowsAndMovies);
+                FilterCollection(tmdbSnapshot.KidsShowsAndMovies);
+                FilterCollection(tmdbSnapshot.WesternShowsAndMovies);
+                FilterCollection(tmdbSnapshot.FantasyMovies);
+                FilterCollection(tmdbSnapshot.HistoryShowsAndMovies);
+                FilterCollection(tmdbSnapshot.RomanceShowsAndMovies);
+                FilterCollection(tmdbSnapshot.WarShowsAndMovies);
+                FilterCollection(tmdbSnapshot.DocumentaryShowsAndMovies);
+                FilterCollection(tmdbSnapshot.SitcomShows);
+                FilterCollection(tmdbSnapshot.AnthologyShows);
+                FilterCollection(tmdbSnapshot.AnimeShowsAndMovies);
+                FilterCollection(tmdbSnapshot.TeenDramaShowsAndMovies);
+                FilterCollection(tmdbSnapshot.HistoricalDramaShowsAndMovies);
+                FilterCollection(tmdbSnapshot.WorkplaceComedyShowsAndMovies);
+                FilterCollection(tmdbSnapshot.MedicalDramaShowsAndMovies);
             }
 
             logger.LogInformation($"TMDBDataCollector filtering collections finished at: {DateTime.Now}");

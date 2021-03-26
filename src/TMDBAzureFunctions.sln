@@ -14,8 +14,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLStatements", "SQLStatements", "{20CA40A6-F57C-466E-A02B-3051238051AF}"
 	ProjectSection(SolutionItems) = preProject
 		SQLStatements\CREATE_DATABASE_SCHEMA.sql = SQLStatements\CREATE_DATABASE_SCHEMA.sql
-		SQLStatements\CREATE_DATABASE_TRIGGER_ListItems.sql = SQLStatements\CREATE_DATABASE_TRIGGER_ListItems.sql
-		SQLStatements\CREATE_DATABASE_TRIGGER_Snapshots.sql = SQLStatements\CREATE_DATABASE_TRIGGER_Snapshots.sql
 		SQLStatements\DROP_DATABASE_TABLES.sql = SQLStatements\DROP_DATABASE_TABLES.sql
 	EndProjectSection
 EndProject
@@ -35,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompressionService", "Share
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMDBDataCleaner", "Functions\TMDBDataCleaner\TMDBDataCleaner.csproj", "{823E5343-BF8A-42E5-AB30-DECE69AF5650}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMDBDailyFileExportDownloader", "Functions\TMDBDailyFileExportDownloader\TMDBDailyFileExportDownloader.csproj", "{CA9A2FE5-62C3-4D5A-AB62-6A902364F8EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMDBDailyFileExportDownloader", "Functions\TMDBDailyFileExportDownloader\TMDBDailyFileExportDownloader.csproj", "{CA9A2FE5-62C3-4D5A-AB62-6A902364F8EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

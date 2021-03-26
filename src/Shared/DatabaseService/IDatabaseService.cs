@@ -9,7 +9,7 @@ namespace DatabaseService
     {
         List<LocalizationCodes> GetLocalizationCodes();
 
-        void SaveCollectedDataToDatabase(TMDBCollection collection);
+        void SaveCollectedDataToDatabase(TMDBSnapshot tmdbSnapshot);
 
         void RemoveOldDataFromDatabase();
 
