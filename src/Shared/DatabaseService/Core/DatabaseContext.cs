@@ -7,9 +7,10 @@ namespace DatabaseService.Core
     {
         private readonly string _databaseConnection;
 
-        public DatabaseContext(string databaseConnection)
+        public DatabaseContext(string databaseConnection) : base()
         {
             _databaseConnection = databaseConnection;
+            Database.SetCommandTimeout(3600);
         }
 
         public DbSet<DailyDownloads> DailyDownloads { get; set; }
@@ -115,12 +116,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.ActionAdventureShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.ActionAdventureShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<AnimationShowsAndMovies>(entity =>
@@ -128,12 +129,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.AnimationShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.AnimationShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<AnimeShowsAndMovies>(entity =>
@@ -141,12 +142,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.AnimeShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.AnimeShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<AnthologyShows>(entity =>
@@ -154,12 +155,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.AnthologyShows)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.AnthologyShows)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<ComedyShowsAndMovies>(entity =>
@@ -167,12 +168,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.ComedyShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.ComedyShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Configurations>(entity =>
@@ -288,7 +289,7 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.Configurations)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<CrimeShowsAndMovies>(entity =>
@@ -296,12 +297,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.CrimeShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.CrimeShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<DocumentaryShowsAndMovies>(entity =>
@@ -309,12 +310,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.DocumentaryShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.DocumentaryShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<DramaShowsAndMovies>(entity =>
@@ -322,12 +323,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.DramaShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.DramaShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<FamilyShowsAndMovies>(entity =>
@@ -335,12 +336,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.FamilyShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.FamilyShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<FantasyMovies>(entity =>
@@ -348,12 +349,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.FantasyMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.FantasyMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<HistoricalDramaShowsAndMovies>(entity =>
@@ -361,12 +362,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.HistoricalDramaShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.HistoricalDramaShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<HistoryShowsAndMovies>(entity =>
@@ -374,12 +375,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.HistoryShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.HistoryShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<HorrorShowsAndMovies>(entity =>
@@ -387,12 +388,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.HorrorShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.HorrorShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<KidsShowsAndMovies>(entity =>
@@ -400,12 +401,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.KidsShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.KidsShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<ListItems>(entity =>
@@ -465,7 +466,7 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.ListItems)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<MedicalDramaShowsAndMovies>(entity =>
@@ -473,12 +474,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.MedicalDramaShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.MedicalDramaShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<MovieGenres>(entity =>
@@ -490,7 +491,7 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.MovieGenres)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<MysteryShowsAndMovies>(entity =>
@@ -498,12 +499,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.MysteryShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.MysteryShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<RomanceShowsAndMovies>(entity =>
@@ -511,12 +512,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.RomanceShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.RomanceShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<ScifiShowsAndMovies>(entity =>
@@ -524,12 +525,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.ScifiShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.ScifiShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<ShowGenres>(entity =>
@@ -541,7 +542,7 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.ShowGenres)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<SitcomShows>(entity =>
@@ -549,12 +550,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.SitcomShows)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.SitcomShows)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Snapshots>(entity =>
@@ -581,12 +582,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.TeenDramaShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.TeenDramaShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<ThrillerShowsAndMovies>(entity =>
@@ -594,12 +595,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.ThrillerShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.ThrillerShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<TrendingShowsAndMovies>(entity =>
@@ -607,12 +608,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.TrendingShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.TrendingShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<WarShowsAndMovies>(entity =>
@@ -620,12 +621,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.WarShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.WarShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<WesternShowsAndMovies>(entity =>
@@ -633,12 +634,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.WesternShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.WesternShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<WorkplaceComedyShowsAndMovies>(entity =>
@@ -646,12 +647,12 @@ namespace DatabaseService.Core
                 entity.HasOne(d => d.ListItem)
                     .WithMany(p => p.WorkplaceComedyShowsAndMovies)
                     .HasForeignKey(d => d.ListItemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Snapshot)
                     .WithMany(p => p.WorkplaceComedyShowsAndMovies)
                     .HasForeignKey(d => d.SnapshotId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
         }
     }

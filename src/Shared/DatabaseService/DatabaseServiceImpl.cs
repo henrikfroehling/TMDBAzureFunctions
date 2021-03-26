@@ -47,9 +47,73 @@ namespace DatabaseService
             List<Snapshots> snapshots = _context.Snapshots.ToList();
 
             // Get all snapshots which are older than a day
-            snapshots = snapshots.Where(s => (s.TimeStamp - DateTime.UtcNow).TotalDays > 1).ToList();
-            _context.RemoveRange(snapshots);
-            _context.SaveChanges();
+            List<Snapshots> oldSnapshots = snapshots.Where(s => Math.Abs((s.TimeStamp - DateTime.UtcNow).TotalDays) > 1).ToList();
+
+            foreach (Snapshots snapshot in oldSnapshots)
+            {
+                List<ActionAdventureShowsAndMovies> actionAndAdventureShowsAndMovies = _context.ActionAdventureShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<AnimationShowsAndMovies> animationShowsAndMovies = _context.AnimationShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<AnimeShowsAndMovies> animeShowsAndMovies = _context.AnimeShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<AnthologyShows> anthologyShows = _context.AnthologyShows.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<ComedyShowsAndMovies> comedyShowsAndMovies = _context.ComedyShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<CrimeShowsAndMovies> crimeShowsAndMovies = _context.CrimeShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<DocumentaryShowsAndMovies> documentaryShowsAndMovies = _context.DocumentaryShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<DramaShowsAndMovies> dramaShowsAndMovies = _context.DramaShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<FamilyShowsAndMovies> familyShowsAndMovies = _context.FamilyShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<FantasyMovies> fantasyMovies = _context.FantasyMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<HistoricalDramaShowsAndMovies> historicalDramaShowsAndMovies = _context.HistoricalDramaShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<HistoryShowsAndMovies> historyShowsAndMovies = _context.HistoryShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<HorrorShowsAndMovies> horrorShowsAndMovies = _context.HorrorShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<KidsShowsAndMovies> kidsShowsAndMovies = _context.KidsShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<MedicalDramaShowsAndMovies> medicalDramaShowsAndMovies = _context.MedicalDramaShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<MysteryShowsAndMovies> mysteryShowsAndMovies = _context.MysteryShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<RomanceShowsAndMovies> romanceShowsAndMovies = _context.RomanceShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<ScifiShowsAndMovies> scifiShowsAndMovies = _context.ScifiShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<SitcomShows> sitcomShows = _context.SitcomShows.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<TeenDramaShowsAndMovies> teenDramaShowsAndMovies = _context.TeenDramaShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<ThrillerShowsAndMovies> thrillerShowsAndMovies = _context.ThrillerShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<TrendingShowsAndMovies> trendingShowsAndMovies = _context.TrendingShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<WarShowsAndMovies> warShowsAndMovies = _context.WarShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<WesternShowsAndMovies> westernShowsAndMovies = _context.WesternShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<WorkplaceComedyShowsAndMovies> workplaceComedyShowsAndMovies = _context.WorkplaceComedyShowsAndMovies.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<ListItems> listItems = _context.ListItems.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<ShowGenres> showGenres = _context.ShowGenres.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<MovieGenres> movieGenres = _context.MovieGenres.Where(e => e.SnapshotId == snapshot.Id).ToList();
+                List<Configurations> configurations = _context.Configurations.Where(e => e.SnapshotId == snapshot.Id).ToList();
+
+                _context.RemoveRange(actionAndAdventureShowsAndMovies);
+                _context.RemoveRange(animationShowsAndMovies);
+                _context.RemoveRange(animeShowsAndMovies);
+                _context.RemoveRange(anthologyShows);
+                _context.RemoveRange(comedyShowsAndMovies);
+                _context.RemoveRange(crimeShowsAndMovies);
+                _context.RemoveRange(documentaryShowsAndMovies);
+                _context.RemoveRange(dramaShowsAndMovies);
+                _context.RemoveRange(familyShowsAndMovies);
+                _context.RemoveRange(fantasyMovies);
+                _context.RemoveRange(historicalDramaShowsAndMovies);
+                _context.RemoveRange(historyShowsAndMovies);
+                _context.RemoveRange(horrorShowsAndMovies);
+                _context.RemoveRange(kidsShowsAndMovies);
+                _context.RemoveRange(medicalDramaShowsAndMovies);
+                _context.RemoveRange(mysteryShowsAndMovies);
+                _context.RemoveRange(romanceShowsAndMovies);
+                _context.RemoveRange(scifiShowsAndMovies);
+                _context.RemoveRange(sitcomShows);
+                _context.RemoveRange(teenDramaShowsAndMovies);
+                _context.RemoveRange(thrillerShowsAndMovies);
+                _context.RemoveRange(trendingShowsAndMovies);
+                _context.RemoveRange(warShowsAndMovies);
+                _context.RemoveRange(westernShowsAndMovies);
+                _context.RemoveRange(workplaceComedyShowsAndMovies);
+                _context.RemoveRange(listItems);
+                _context.RemoveRange(showGenres);
+                _context.RemoveRange(movieGenres);
+                _context.RemoveRange(configurations);
+
+                _context.Remove(snapshot);
+                _context.SaveChanges();
+            }
         }
 
         public void WriteDailyDownloadsIntoDatabase(string dailyDownloadCollectionsJSON, string dailyDownloadNetworksJSON, string dailyDownloadKeywordsJSON)
